@@ -1,0 +1,6 @@
+@Barajas_HostAddress = http://localhost:5188
+
+GET {{Barajas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

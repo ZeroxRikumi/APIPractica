@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "jYkkLYFcUwCoSjw+NfwkocXj9c8nObcOQBMRlSEHU8I=",
+  "Source": "BarajaService",
+  "BasePath": "_content/BarajaService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
