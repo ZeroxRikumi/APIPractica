@@ -30,3 +30,4 @@ D:\Practica\PracticaAPI\src\GatewayService\obj\Debug\net9.0\refint\GatewayServic
 D:\Practica\PracticaAPI\src\GatewayService\obj\Debug\net9.0\GatewayService.pdb
 D:\Practica\PracticaAPI\src\GatewayService\obj\Debug\net9.0\GatewayService.genruntimeconfig.cache
 D:\Practica\PracticaAPI\src\GatewayService\obj\Debug\net9.0\ref\GatewayService.dll
+D:\Practica\PracticaAPI\src\GatewayService\obj\Debug\net9.0\GatewayService.sourcelink.json

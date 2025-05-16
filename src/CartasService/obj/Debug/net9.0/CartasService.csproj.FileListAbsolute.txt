@@ -270,3 +270,4 @@ D:\Practica\PracticaAPI\src\CartasService\obj\Debug\net9.0\refint\CartasService.
 D:\Practica\PracticaAPI\src\CartasService\obj\Debug\net9.0\CartasService.pdb
 D:\Practica\PracticaAPI\src\CartasService\obj\Debug\net9.0\CartasService.genruntimeconfig.cache
 D:\Practica\PracticaAPI\src\CartasService\obj\Debug\net9.0\ref\CartasService.dll
+D:\Practica\PracticaAPI\src\CartasService\obj\Debug\net9.0\CartasService.sourcelink.json

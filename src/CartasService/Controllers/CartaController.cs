@@ -4,6 +4,7 @@ using CartasService.Models;
 using CartasService.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.Common;
 
 namespace CartasService.Controllers;
 
@@ -47,6 +48,19 @@ public class CartaController : ControllerBase
         
         return CreatedAtAction(nameof(GetCartaById),
             new {carta.Id}, newCarta);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCarta(int id, CreateCardDto updateCardDto)
+    {
+        var carta = await _repo.GetCartaById(id);
+        if (carta == null) return NotFound();
+        carta.Nombre = updateCardDto.Nombre;
+        carta.Pinta = updateCardDto.Pinta;
+        var result = await _repo.SaveChangesAsync();
+
+        if (!result) return BadRequest("No se pudo actualizar la BD");
+        return Ok();
     }
 
     [HttpDelete("{id}")]

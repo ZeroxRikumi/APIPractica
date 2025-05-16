@@ -1,0 +1,71 @@
+services:
+  cartasdb:
+    image: postgres
+    container_name: cartas_postgres
+    environment:
+      - POSTGRES_DB=ApiCartasDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+    ports:
+      - 5432:5432
+    volumes:
+      - cartas-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  barajasdb:
+    image: postgres
+    container_name: barajas_postgres
+    environment:
+      - POSTGRES_DB=ApibarajasDB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+    ports:
+      - 5433:5432
+    volumes:
+      - barajas-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  cartas-services:
+    build:
+      context: ./src/CartasService
+    depends_on:
+      cartasdb:
+       condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=cartasdb;Port=5432;Database=ApiCartasDB;Username=postgres;Password=12345
+    ports:
+      - "8003:8080"
+  barajas-services:
+    build:
+      context: ./src/BarajaService
+    depends_on:
+      barajasdb:
+       condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=barajasdb;Port=5432;Database=ApibarajasDB;Username=postgres;Password=12345
+    ports:
+      - "8004:8080"
+  gateway:
+    build: 
+      context: ./src/GatewayService
+    depends_on:
+      - cartas-services
+      - barajas-services
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8002:8080"
+
+volumes:
+  cartas-data:
+  barajas-data:

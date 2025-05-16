@@ -9,6 +9,10 @@ public class Poder
     public string Nombre { get; set; } = string.Empty;
 
     public EFuerza Fuerza {get; set;}
+    
+    public int CartaId { get; set; }
+
+    public Carta? carta { get; set; }
 
     public enum EFuerza
     {

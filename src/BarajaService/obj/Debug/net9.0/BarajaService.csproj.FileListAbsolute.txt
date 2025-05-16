@@ -134,3 +134,4 @@ D:\Practica\PracticaAPI\src\BarajaService\obj\Debug\net9.0\refint\BarajaService.
 D:\Practica\PracticaAPI\src\BarajaService\obj\Debug\net9.0\BarajaService.pdb
 D:\Practica\PracticaAPI\src\BarajaService\obj\Debug\net9.0\BarajaService.genruntimeconfig.cache
 D:\Practica\PracticaAPI\src\BarajaService\obj\Debug\net9.0\ref\BarajaService.dll
+D:\Practica\PracticaAPI\src\BarajaService\obj\Debug\net9.0\BarajaService.sourcelink.json
