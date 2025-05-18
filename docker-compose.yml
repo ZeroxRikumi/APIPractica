@@ -33,9 +33,10 @@ services:
       timeout: 5s
       retries: 5
   
-  cartas-services:
+  cartasservices:
     build:
       context: ./src/CartasService
+    container_name: cartasservice
     depends_on:
       cartasdb:
        condition: service_healthy
@@ -44,9 +45,10 @@ services:
       - ConnectionStrings__DefaultConnection=Host=cartasdb;Port=5432;Database=ApiCartasDB;Username=postgres;Password=12345
     ports:
       - "8003:8080"
-  barajas-services:
+  barajasservices:
     build:
       context: ./src/BarajaService
+    container_name: barajasservice
     depends_on:
       barajasdb:
        condition: service_healthy
@@ -55,14 +57,13 @@ services:
       - ConnectionStrings__DefaultConnection=Host=barajasdb;Port=5432;Database=ApibarajasDB;Username=postgres;Password=12345
     ports:
       - "8004:8080"
-  gateway:
+  apigateway:
     build: 
       context: ./src/GatewayService
+    container_name: apigateway
     depends_on:
-      - cartas-services
-      - barajas-services
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
+      - cartasservices
+      - barajasservices
     ports:
       - "8002:8080"
 

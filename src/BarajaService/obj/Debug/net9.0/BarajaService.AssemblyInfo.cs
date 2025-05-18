@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarajaService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b35adb3934130dc66c0bef96d4a19f04a342af7b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68176b2c5fbfafcba8ab378623c656770a79126b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarajaService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarajaService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
