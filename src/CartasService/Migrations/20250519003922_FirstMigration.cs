@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace BarajaService.Migrations
+namespace CartasService.Migrations
 {
     /// <inheritdoc />
     public partial class FirstMigration : Migration
@@ -12,53 +12,54 @@ namespace BarajaService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Barajas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nombre = table.Column<string>(type: "text", nullable: false),
-                    cantidad = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Barajas", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Carta",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nombre = table.Column<string>(type: "text", nullable: false),
-                    Pinta = table.Column<string>(type: "text", nullable: false),
-                    BarajaId = table.Column<int>(type: "integer", nullable: true)
+                    Pinta = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Carta", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Poder",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nombre = table.Column<string>(type: "text", nullable: false),
+                    Fuerza = table.Column<int>(type: "integer", nullable: false),
+                    CartaId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Poder", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Carta_Barajas_BarajaId",
-                        column: x => x.BarajaId,
-                        principalTable: "Barajas",
-                        principalColumn: "Id");
+                        name: "FK_Poder_Carta_CartaId",
+                        column: x => x.CartaId,
+                        principalTable: "Carta",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carta_BarajaId",
-                table: "Carta",
-                column: "BarajaId");
+                name: "IX_Poder_CartaId",
+                table: "Poder",
+                column: "CartaId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Carta");
+                name: "Poder");
 
             migrationBuilder.DropTable(
-                name: "Barajas");
+                name: "Carta");
         }
     }
 }

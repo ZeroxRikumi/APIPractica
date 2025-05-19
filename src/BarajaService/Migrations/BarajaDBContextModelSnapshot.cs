@@ -49,7 +49,7 @@ namespace BarajaService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BarajaId")
+                    b.Property<int>("BarajaId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nombre")
@@ -69,9 +69,13 @@ namespace BarajaService.Migrations
 
             modelBuilder.Entity("BarajaService.Models.Carta", b =>
                 {
-                    b.HasOne("BarajaService.Models.Baraja", null)
+                    b.HasOne("BarajaService.Models.Baraja", "baraja")
                         .WithMany("Cartas")
-                        .HasForeignKey("BarajaId");
+                        .HasForeignKey("BarajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("baraja");
                 });
 
             modelBuilder.Entity("BarajaService.Models.Baraja", b =>

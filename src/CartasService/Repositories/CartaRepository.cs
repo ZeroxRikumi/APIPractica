@@ -10,10 +10,10 @@ namespace CartasService.Repositories;
 
 public class CartaRepository : ICartaRepository
 {
-    private readonly AppDBContext _context;
+    private readonly CartasDBContext _context;
     private readonly IMapper _mapper;
 
-    public CartaRepository(AppDBContext context, IMapper mapper)
+    public CartaRepository(CartasDBContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

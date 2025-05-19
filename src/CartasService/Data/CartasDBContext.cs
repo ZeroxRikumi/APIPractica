@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CartasService.Data;
 
-public class AppDBContext : DbContext
+public class CartasDBContext : DbContext
 {
-    public AppDBContext(DbContextOptions options) : base(options)
+    public CartasDBContext(DbContextOptions options) : base(options)
     {
     }
 

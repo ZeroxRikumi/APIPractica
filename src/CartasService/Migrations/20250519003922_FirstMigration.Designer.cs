@@ -10,9 +10,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CartasService.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
-    [Migration("20250516221038_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(CartasDBContext))]
+    [Migration("20250519003922_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

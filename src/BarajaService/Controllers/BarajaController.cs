@@ -50,6 +50,18 @@ namespace BarajaService.Controllers
                 new { baraja.Id }, newBaraja);
         }
 
+        [HttpPut]
+        public async Task<ActionResult> UpdateBaraja(int id, CrearBarajaDTO updateBarajaDto)
+        {
+            var baraja = await _repo.GetBarajaById(id);
+            if (baraja == null) return NotFound();
+            baraja.Nombre = updateBarajaDto.Nombre;
+            baraja.cantidad = updateBarajaDto.cantidad;
+            var result = await _repo.SaveChangesAsync();
+
+            if (!result) return BadRequest("No se pudo actualizar la BD");
+            return Ok();
+        }
         [HttpDelete]
         public async Task<ActionResult> DeleteBaraja(int id)
         {
